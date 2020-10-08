@@ -6,10 +6,11 @@ import styles from './Toolbar.module.css'
 const Toolbar = (props) => {
   return (
     <header className={styles.Toolbar}>
+      <div>Menu</div>
       <div className={styles.Logo}>
         <Logo />
       </div>
-      <nav>
+      <nav className={styles.DesktopOnly}>
         <NavigationItems />
       </nav>
     </header>
