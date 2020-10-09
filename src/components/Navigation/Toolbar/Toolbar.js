@@ -1,6 +1,5 @@
 import React from 'react'
 import Logo from '../../Logo/Logo'
-import HamburgerIcon from '../HamburgerIcon/HamburgerIcon'
 import NavigationItems from '../NavigationItems/NavigationItems'
 import DrawerToggle from '../SideDraw/DrawerToggle/DrawerToggle'
 import styles from './Toolbar.module.css'
