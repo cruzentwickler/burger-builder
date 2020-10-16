@@ -1,7 +1,11 @@
 .Order {
-  width: 100%;
+  width: 80%;
   border: 1px solid #ccc;
   box-shadow: 0 2px 3px #ccc;
   padding: 10px;
-  margin-bottom: 0.5rem;
+  margin: 10px auto;
+}
+
+.Order p:first-of-type {
+  margin-bottom: 1rem;
 }
