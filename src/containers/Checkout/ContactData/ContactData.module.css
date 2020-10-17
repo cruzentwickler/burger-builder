@@ -8,11 +8,7 @@
 }
 
 .ContactData h4 {
-  margin-bottom: 1rem;
-}
-
-.Input {
-  display: block;
+  margin: 1rem 0;
 }
 
 @media (min-width: 600px) {
