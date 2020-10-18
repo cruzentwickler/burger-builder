@@ -51,7 +51,7 @@ class ContactData extends Component {
       deleveryMethod: {
         elementType: 'select',
         elementConfig: {
-          option: [
+          options: [
             { value: 'fastest', displayValue: 'Fastest' },
             { value: 'cheapest', displayValue: 'Cheapest' },
           ],
