@@ -37,7 +37,7 @@ class BurgerBuilder extends Component {
       .reduce((sum, el) => {
         return sum + el
       }, 0)
-    this.setState({ purchasable: sum > 0 })
+    return sum > 0
   }
 
   purchaseHandler = () => {
@@ -92,7 +92,7 @@ class BurgerBuilder extends Component {
             ingredientRemove={this.props.onIngredientRemoved} // * I alrady passt the Ingredient in the child component, for that reason i dont convert the component in a arrow function
             disabled={disabledInfo}
             price={this.props.price}
-            purchasable={this.state.purchasable}
+            purchasable={this.updatePurchaseState(this.props.ings)}
             ordered={this.purchaseHandler}
           />
         </>
