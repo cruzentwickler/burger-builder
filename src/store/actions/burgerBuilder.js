@@ -15,7 +15,7 @@ export const removeIngredient = (name) => {
   }
 }
 
-export const seIngredients = (ingredients) => {
+export const setIngredients = (ingredients) => {
   return {
     type: actionTypes.SET_INGREDIENT,
     ingredients: ingredients,
@@ -33,7 +33,7 @@ export const initIngredients = () => {
     axios
       .get('/ingredients.json')
       .then((response) => {
-        dispatch(seIngredients(response))
+        dispatch(setIngredients(response.data))
       })
       .catch((error) => {
         dispatch(fetchIngredientsFailed())
