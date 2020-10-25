@@ -36,7 +36,15 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SET_INGREDIENT:
       return {
         ...state,
-        ingredients: action.ingredients,
+        // ingredients: action.ingredients,
+        // * I will use this manual tecknic to have the posibility to order the ingredients
+        // ! less flexibility if i ordered manual
+        ingredients: {
+          salad: action.ingredients.salad,
+          bacon: action.ingredients.bacon,
+          cheese: action.ingredients.cheese,
+          meat: action.ingredients.meat,
+        },
         error: false,
       }
     case actionTypes.FETCH_INGREDIENTS_FAILED:
