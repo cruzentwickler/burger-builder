@@ -40,30 +40,7 @@ class Auth extends Component {
         touched: false,
       },
     },
-  }
-
-  inputChangedHandler = (event, controlName) => {
-    const updatedControls = {
-      ...this.state.controls,
-      [controlName]: {
-        ...this.state.controls[controlName],
-        value: event.target.value,
-        valid: this.checkValidity(
-          event.target.value,
-          this.state.controls[controlName].validation
-        ),
-        touched: true,
-      },
-    }
-    this.setState({ controls: updatedControls })
-  }
-
-  submitHandler = (event) => {
-    event.preventDefault()
-    this.props.onAuth(
-      this.state.controls.email.value,
-      this.state.controls.password.value
-    )
+    isSignup: true,
   }
 
   checkValidity(value, rules) {
@@ -98,6 +75,37 @@ class Auth extends Component {
     return isValid
   }
 
+  inputChangedHandler = (event, controlName) => {
+    const updatedControls = {
+      ...this.state.controls,
+      [controlName]: {
+        ...this.state.controls[controlName],
+        value: event.target.value,
+        valid: this.checkValidity(
+          event.target.value,
+          this.state.controls[controlName].validation
+        ),
+        touched: true,
+      },
+    }
+    this.setState({ controls: updatedControls })
+  }
+
+  submitHandler = (event) => {
+    event.preventDefault()
+    this.props.onAuth(
+      this.state.controls.email.value,
+      this.state.controls.password.value,
+      this.state.isSignup
+    )
+  }
+
+  switchAuthModeHandler = (event) => {
+    event.preventDefault()
+    this.setState((prevState) => {
+      return { isSignup: !prevState.isSignup }
+    })
+  }
   render() {
     const formElementsArray = []
     for (let key in this.state.controls) {
@@ -125,6 +133,9 @@ class Auth extends Component {
           {form}
           <Button btnType="Success">SUBMIT</Button>
         </form>
+        <Button btnType="Danger" clicked={this.switchAuthModeHandler}>
+          SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}
+        </Button>
       </div>
     )
   }
@@ -132,7 +143,8 @@ class Auth extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuth: (email, password) => dispatch(actions.auth(email, password)),
+    onAuth: (email, password, isSignup) =>
+      dispatch(actions.auth(email, password, isSignup)),
   }
 }
 
