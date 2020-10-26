@@ -141,6 +141,10 @@ class Auth extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {}
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onAuth: (email, password, isSignup) =>
@@ -148,4 +152,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Auth)
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)
