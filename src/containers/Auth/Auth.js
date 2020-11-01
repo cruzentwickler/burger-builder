@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { updatedObject } from '../../shared/utility'
 // * Router
 import { Redirect } from 'react-router-dom'
 // * Redux
@@ -85,18 +86,16 @@ class Auth extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
-    const updatedControls = {
-      ...this.state.controls,
-      [controlName]: {
-        ...this.state.controls[controlName],
+    const updatedControls = updatedObject(this.state.controls, {
+      [controlName]: updatedObject(this.state.controls[controlName], {
         value: event.target.value,
         valid: this.checkValidity(
           event.target.value,
           this.state.controls[controlName].validation
         ),
         touched: true,
-      },
-    }
+      }),
+    })
     this.setState({ controls: updatedControls })
   }
 
