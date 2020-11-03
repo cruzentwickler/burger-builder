@@ -14,7 +14,7 @@ export const BurgerBuilder = (props) => {
   const [purchasing, setPurchasing] = useState(false)
 
   const dispatch = useDispatch()
-  const ings = useSelector((state) => state.burgerBuilder.totalPrice)
+  const ings = useSelector((state) => state.burgerBuilder.ingredients)
   const price = useSelector((state) => state.burgerBuilder.totalPrice)
   const error = useSelector((state) => state.burgerBuilder.error)
   const isAuthenticated = useSelector((state) => state.auth.token !== null)
