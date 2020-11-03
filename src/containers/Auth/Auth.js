@@ -13,6 +13,8 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import styles from './Auth.module.css'
 
 const Auth = (props) => {
+  const { buildingBurger, authRedirectPath, onSetAuthRedirectPath } = props
+
   const [authForm, setAuthForm] = useState({
     email: {
       elementType: 'input',
@@ -46,10 +48,10 @@ const Auth = (props) => {
   const [isSignup, setIsSignup] = useState(true)
 
   useEffect(() => {
-    if (!props.buildingBurger && props.authRedirectPath !== '/') {
-      props.onSetAuthRedirectPath()
+    if (!buildingBurger && authRedirectPath !== '/') {
+      onSetAuthRedirectPath()
     }
-  }, [])
+  }, [buildingBurger, authRedirectPath, onSetAuthRedirectPath])
 
   const inputChangedHandler = (event, controlName) => {
     const updatedControls = updatedObject(authForm, {
